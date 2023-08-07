@@ -2,7 +2,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import mapboxgl, { GeolocateControl } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+const cspWorkerUrl = require('mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 mapboxgl.accessToken = 'pk.eyJ1IjoibHV2MjEwMTIiLCJhIjoiY2xrd2h4MTRnMDNocTNjbnphMHIyOGYxbCJ9.1cAcp80juY-TkemwZ9UPOw';
+
+mapboxgl.workerClass = cspWorkerUrl;
 
 const MapboxDirectionsComponent = ({ origin, destination }) => {
   const [instructions, setInstructions] = useState([]);
